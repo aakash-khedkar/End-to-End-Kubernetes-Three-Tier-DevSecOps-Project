@@ -6,12 +6,10 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
 
-    # ADD THESE
-    alb.ingress.kubernetes.io/healthcheck-path: /healthz
-    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
-    alb.ingress.kubernetes.io/success-codes: "200"
+    # frontend healthcheck
+    alb.ingress.kubernetes.io/healthcheck-path: /
 
 spec:
   ingressClassName: alb
@@ -19,6 +17,7 @@ spec:
   rules:
   - host: amanpathakdevops.study
     http:
+
       paths:
 
       - path: /api
